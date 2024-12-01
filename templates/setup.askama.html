@@ -1,0 +1,17 @@
+{% extends "layout.askama.html" %}
+
+{% block body %}
+<div class="login">
+    <svg class="nextcloud-logo" height="100" viewBox="0 0 142 100" width="142" xmlns="http://www.w3.org/2000/svg">
+        <use href="/img/nextcloud-logo.svg#logo"></use>
+        <use href="/img/nextcloud-logo.svg#Nextcloud"></use>
+        <text class="fallback-text" fill="var(--color-nextcloud-logo)" x="10" y="50">Nextcloud Logo</text>
+    </svg>
+    <h1>All-in-One setup</h1>
+    <p>The official Nextcloud installation method. Nextcloud All-in-One provides easy deployment and maintenance with
+        most features included in this one Nextcloud instance.</p>
+    <p>⚠️ <strong>Please note down the passphrase to access the AIO interface and don't lose it!</strong></p>
+    <strong>Passphrase</strong><br/><span class="monospace">{{ password }}</span><br>
+    <a class="button" href="/" rel="noopener" target="_blank">Open Nextcloud AIO login ↗</a>
+</div>
+{% endblock %}

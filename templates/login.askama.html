@@ -1,0 +1,33 @@
+{% extends "layout.askama.html" %}
+
+{% block body %}
+<div class="login">
+    <svg class="nextcloud-logo" height="100" viewBox="0 0 142 100" width="142" xmlns="http://www.w3.org/2000/svg">
+        <use href="/img/nextcloud-logo.svg#logo"></use>
+        <use href="/img/nextcloud-logo.svg#Nextcloud"></use>
+        <text class="fallback-text" fill="var(--color-nextcloud-logo)" x="10" y="50">Nextcloud Logo</text>
+    </svg>
+    <h1>Nextcloud AIO Login</h1>
+    {% if is_login_allowed == true %}
+    <p>Log in using your Nextcloud AIO passphrase:</p>
+    <form action="/api/auth/login" class="xhr" method="POST">
+        <input autocomplete="current-password" id="master-password" name="password"
+               oninput="showPassword('master-password')"
+               placeholder="Password" type="password">
+        <!--<input type="hidden" name="//csrf.keys.name//" value="//csrf.name//">-->
+        <!--<input type="hidden" name="//csrf.keys.value//" value="//csrf.value//">-->
+        <input class="button" type="submit" value="Log in"/>
+    </form>
+    {% else %}
+    <p>The login is blocked since Nextcloud is running.<br>Please use the <a
+            href="https://github.com/nextcloud/all-in-one#how-to-easily-log-in-to-the-aio-interface"><strong>automatic
+        login</strong></a> from your Nextcloud.<br><br>
+        If that is not possible, you can unblock the login by running<br><strong>sudo docker stop
+            nextcloud-aio-apache</strong></p>
+    {% endif %}
+</div>
+<script src="before-unload.js" type="text/javascript"></script>
+<div id="overlay">
+    <div class="loader"></div>
+</div>
+{% endblock %}
